@@ -51,22 +51,19 @@ export default function Root() {
  return (
    
   <Container
-   sx={{
-   
-   }}
+       addSubredditCnt
   >
-  
-
- 
-          <Box 
-          maxWidth={'100%'}
-          >
-          <Navbar />
+          <Navbar/>
+          <Box sx={{
+            display: 'flex',
+            alignItems: 'start',
+            justifyContent: 'space-between',
+           
+            m: 5,
+          }}>
           <Post />
-         
+          <Subreddit/>
           </Box>
-
-  
   </Container>
   
  );

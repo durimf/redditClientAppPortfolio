@@ -4,7 +4,7 @@ import PostCard from '../assets/PostCard'
 
 function Post() {
   return (
-   <Box>
+   <Box flex={2} mr={5}> 
     <PostCard />
    </Box>
   )

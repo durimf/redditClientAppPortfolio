@@ -17,6 +17,8 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import CommentIcon from '@mui/icons-material/Comment';
 import { Box } from '@mui/system';
+import { matchPath } from 'react-router-dom';
+
 
 const ExpandMore = styled((props) => {
  const { expand, ...other } = props;
@@ -29,14 +31,22 @@ const ExpandMore = styled((props) => {
  }),
 }));
 
-export default function RecipeReviewCard() {
+export default function PostCard() {
  const [expanded, setExpanded] = React.useState(false);
+
+
+  
+
 
  const handleExpandClick = () => {
   setExpanded(!expanded);
  };
 
  return (
+
+  <Box flex={2} mr={5}> 
+   
+  
   <Card sx={{ my: 10}}>
    <CardHeader
     action={
@@ -71,7 +81,7 @@ export default function RecipeReviewCard() {
     
      
     }
-    title="Post Title"
+    // title={title}
     
    />
    
@@ -80,7 +90,7 @@ export default function RecipeReviewCard() {
      
      component="img"
      height="100%"
-     image="https://images.unsplash.com/photo-1662581872277-0fd0bf3ae8f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+     image='{url}'
      alt="Paella dish"
     />
    <Box sx={{
@@ -91,7 +101,9 @@ export default function RecipeReviewCard() {
     alignItems: 'center',
     justifyContent: 'space-between'
    }}>
-     <Typography>Username</Typography>
+     <Typography
+     color="secondary"
+     >Username</Typography>
      <Typography>Post Time</Typography>
      <CardActions disableSpacing
      >
@@ -134,5 +146,6 @@ export default function RecipeReviewCard() {
     </CardContent>
    </Collapse>
   </Card>
+   </Box>
  );
 }

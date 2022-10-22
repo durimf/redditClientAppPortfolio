@@ -8,11 +8,11 @@ NavLink,
  useNavigation,
    useSubmit } from "react-router-dom";
 import { getContacts, createContact } from "../contacts";
-import { useEffect } from "react";
 import Navbar from "../components/Navbar";
-import Reddits from "../components/Reddits";
-import Subreddits from "../components/Subreddits";
+
 import { Box, Container } from '@mui/material'
+import { ThemeProvider } from "styled-components";
+import darkTheme from "../styles/styles";
 
 export async function loader({ request }) {
    const url = new URL(request.url);
@@ -46,10 +46,10 @@ export default function Root() {
 
 
  return (
+   
   <Container>
   <Navbar  />
-  {/* <Reddits />
-  <Subreddits /> */}
     </Container>
+  
  );
 }

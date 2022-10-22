@@ -11,7 +11,8 @@ import ErrorPage from './pages/error-page';
 import Contact, { loader as contactLoader, action as contactAction } from './routes/contact';
 import EditContact, { action as editAction } from "./routes/edit";
 import { action as destroyAction } from "./routes/destroy";
-import Index from "./routes/index";
+import darkTheme from '../src/styles/styles'
+import { ThemeProvider } from 'styled-components';
 
 
 
@@ -55,6 +56,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <ThemeProvider theme={darkTheme}>
     <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 )

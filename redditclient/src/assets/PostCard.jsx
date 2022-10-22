@@ -37,7 +37,7 @@ export default function RecipeReviewCard() {
  };
 
  return (
-  <Card sx={{ my: 10, maxWidth: 500}}>
+  <Card sx={{ my: 10}}>
    <CardHeader
     action={
      <Box 

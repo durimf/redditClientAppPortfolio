@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Reddits() {
+function Reddit() {
   return (
     <div>Reddits</div>
   )
 }
 
-export default Reddits
+export default Reddit

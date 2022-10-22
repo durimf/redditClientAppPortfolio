@@ -13,6 +13,9 @@ import Navbar from "../components/Navbar";
 import { Box, Container } from '@mui/material'
 import { ThemeProvider } from "styled-components";
 import darkTheme from "../styles/styles";
+import Post from "../components/Post";
+import { display, flexbox, Stack } from "@mui/system";
+import Subreddit from "../components/Subreddit";
 
 export async function loader({ request }) {
    const url = new URL(request.url);
@@ -47,9 +50,24 @@ export default function Root() {
 
  return (
    
-  <Container>
-  <Navbar  />
-    </Container>
+  <Container
+   sx={{
+   
+   }}
+  >
+  
+
+ 
+          <Box 
+          maxWidth={'100%'}
+          >
+          <Navbar />
+          <Post />
+         
+          </Box>
+
+  
+  </Container>
   
  );
 }

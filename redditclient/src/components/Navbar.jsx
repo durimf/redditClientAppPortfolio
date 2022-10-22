@@ -10,17 +10,19 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 function Navbar() {
   return (
     <Box sx={{
-      m: 3,
+      my: 5,
       borderBottom: '1px solid',
       borderColor: grey[300],
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      
     }}>
       <RedditIcon sx={{
         fontSize: 65,
         color: purple[700]
       }} />
+     
       <Box sx={{
         display: 'flex',
         alignItems: 'center',

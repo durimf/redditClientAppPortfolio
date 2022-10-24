@@ -7,14 +7,25 @@ import { ThemeProvider } from "styled-components";
 import darkTheme from "../styles/styles";
 import SubredditsContainer from '../features/subreddits/SubredditsContainer'
 import PostsContainer from '../features/posts/PostsContainer'
-import Main from "./Main";
+import Errorpage from "../pages/Errorpage";
 
 
 export default function App() {
  return (
-   <Routes>
-        <Route path="/" element={<Main />} />
-       <Route path="/subreddit:subredditName" element={<Main />} />
-    </Routes>
+   <Box sx={{
+      
+   }}>
+      <Navbar />
+   <Box sx={{
+      display: 'flex'
+   }}>
+          <Routes>
+             <Route path="/" element={<PostsContainer />} />
+             <Route path="/subreddit/:subredditName" element={<PostsContainer />} />
+             <Route path="*" element={<h1>Error Pofla</h1>} />
+          </Routes>
+          <SubredditsContainer />
+   </Box>
+   </Box>
  );
 }

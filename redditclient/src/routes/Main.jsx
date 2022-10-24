@@ -7,7 +7,7 @@ import SubredditsContainer from '../features/subreddits/SubredditsContainer'
 function Main() {
   return (
    <Container
-    addSubredditCnt
+    
    >
     <Navbar />
     <Box sx={{
@@ -17,7 +17,7 @@ function Main() {
 
      m: 5,
     }}>
-     <PostsContainer />
+     {/* <PostsContainer /> */}
      <SubredditsContainer />
     </Box>
    </Container>

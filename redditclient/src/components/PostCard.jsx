@@ -17,8 +17,8 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import CommentIcon from '@mui/icons-material/Comment';
 import { Box } from '@mui/system';
-import { matchPath } from 'react-router-dom';
-
+import { matchPath, useParams } from 'react-router-dom';
+import { useGetPostQuery } from '../features/api/apiSlice'
 
 const ExpandMore = styled((props) => {
  const { expand, ...other } = props;
@@ -34,6 +34,14 @@ const ExpandMore = styled((props) => {
 export default function PostCard() {
  const [expanded, setExpanded] = React.useState(false);
 
+  const { subredditName } = useParams()
+
+  const { data: post, isFetching, isSuccess } = useGetPostQuery(subredditName)
+  
+
+  if(post) {
+    console.log(post.data.children)
+  }
 
   
 
@@ -46,106 +54,112 @@ export default function PostCard() {
 
   <Box flex={2} mr={5}> 
    
-  
-  <Card sx={{ my: 10}}>
-   <CardHeader
-    action={
-     <Box 
-     sx={{
-      display: 'flex',
-      
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      height: 120,
-     }}>
-     <IconButton aria-label="votes"
-      
-      >
-      <ArrowUpwardIcon />
-     </IconButton>
-     <Typography>
-      1.1K
-     </Typography>
-      <IconButton aria-label="votes"
-       sx={{
+  {
+    post && post.data.children.map(post => {
+      return (
+        <Card sx={{ my: 10 }}>
+          <CardHeader
+            action={
+              <Box
+                sx={{
+                  display: 'flex',
 
-        display: 'flex',
-        flexDirection: 'column',
-        borderRadius: 'none'
-       }}
-      >
-       <ArrowDownwardIcon />
-      </IconButton>
-      </Box>
-    
-     
-    }
-    // title={title}
-    
-   />
-   
-   <CardContent>
-    <CardMedia
-     
-     component="img"
-     height="100%"
-     image='{url}'
-     alt="Paella dish"
-    />
-   <Box sx={{
-    mt: 5,
-    pt: 3,
-    borderTop: `1px solid ${grey[300]}`,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between'
-   }}>
-     <Typography
-     color="secondary"
-     >Username</Typography>
-     <Typography>Post Time</Typography>
-     <CardActions disableSpacing
-     >
-      <CommentIcon fontSize='small'
-       expand={expanded}
-       onClick={handleExpandClick}
-       aria-expanded={expanded}
-       aria-label="show more"
-      />
-     </CardActions>
-   </Box>
-   </CardContent >
-   <Collapse in={expanded} timeout="auto" unmountOnExit>
-    <CardContent>
-     <Typography paragraph>Method:</Typography>
-     <Typography paragraph>
-      Heat 1/2 cup of the broth in a pot until simmering, add saffron and set
-      aside for 10 minutes.
-     </Typography>
-     <Typography paragraph>
-      Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over
-      medium-high heat. Add chicken, shrimp and chorizo, and cook, stirring
-      occasionally until lightly browned, 6 to 8 minutes. Transfer shrimp to a
-      large plate and set aside, leaving chicken and chorizo in the pan. Add
-      pimentón, bay leaves, garlic, tomatoes, onion, salt and pepper, and cook,
-      stirring often until thickened and fragrant, about 10 minutes. Add
-      saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
-     </Typography>
-     <Typography paragraph>
-      Add rice and stir very gently to distribute. Top with artichokes and
-      peppers, and cook without stirring, until most of the liquid is absorbed,
-      15 to 18 minutes. Reduce heat to medium-low, add reserved shrimp and
-      mussels, tucking them down into the rice, and cook again without
-      stirring, until mussels have opened and rice is just tender, 5 to 7
-      minutes more. (Discard any mussels that don&apos;t open.)
-     </Typography>
-     <Typography>
-      Set aside off of the heat to let rest for 10 minutes, and then serve.
-     </Typography>
-    </CardContent>
-   </Collapse>
-  </Card>
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  height: 120,
+                }}>
+                <IconButton aria-label="votes"
+
+                >
+                  <ArrowUpwardIcon />
+                </IconButton>
+                <Typography>
+                  1.1K
+                </Typography>
+                <IconButton aria-label="votes"
+                  sx={{
+
+                    display: 'flex',
+                    flexDirection: 'column',
+                    borderRadius: 'none'
+                  }}
+                >
+                  <ArrowDownwardIcon />
+                </IconButton>
+              </Box>
+
+
+            }
+            title={post.data.title}
+
+          />
+
+          <CardContent>
+            <CardMedia
+
+              component="img"
+              height="100%"
+              image={post.data.url}
+              alt="Paella dish"
+            />
+            <Box sx={{
+              mt: 5,
+              pt: 3,
+              borderTop: `1px solid ${grey[300]}`,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between'
+            }}>
+              <Typography
+                color="secondary"
+              >Username</Typography>
+              <Typography>{post.data.created}</Typography>
+              <CardActions disableSpacing
+              >
+                <CommentIcon fontSize='small'
+                  expand={expanded}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label="show more"
+                />
+              </CardActions>
+            </Box>
+          </CardContent >
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
+            <CardContent>
+              <Typography paragraph>Method:</Typography>
+              <Typography paragraph>
+                Heat 1/2 cup of the broth in a pot until simmering, add saffron and set
+                aside for 10 minutes.
+              </Typography>
+              <Typography paragraph>
+                Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over
+                medium-high heat. Add chicken, shrimp and chorizo, and cook, stirring
+                occasionally until lightly browned, 6 to 8 minutes. Transfer shrimp to a
+                large plate and set aside, leaving chicken and chorizo in the pan. Add
+                pimentón, bay leaves, garlic, tomatoes, onion, salt and pepper, and cook,
+                stirring often until thickened and fragrant, about 10 minutes. Add
+                saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
+              </Typography>
+              <Typography paragraph>
+                Add rice and stir very gently to distribute. Top with artichokes and
+                peppers, and cook without stirring, until most of the liquid is absorbed,
+                15 to 18 minutes. Reduce heat to medium-low, add reserved shrimp and
+                mussels, tucking them down into the rice, and cook again without
+                stirring, until mussels have opened and rice is just tender, 5 to 7
+                minutes more. (Discard any mussels that don&apos;t open.)
+              </Typography>
+              <Typography>
+                Set aside off of the heat to let rest for 10 minutes, and then serve.
+              </Typography>
+            </CardContent>
+          </Collapse>
+        </Card>
+      )
+    })
+  }
+  
    </Box>
  );
 }

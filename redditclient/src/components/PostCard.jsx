@@ -21,6 +21,7 @@ import { matchPath, useParams } from 'react-router-dom';
 import { useGetPostQuery } from '../features/api/apiSlice'
 
 const ExpandMore = styled((props) => {
+  
  const { expand, ...other } = props;
  return <IconButton {...other} />;
 })(({ theme, expand }) => ({
@@ -53,17 +54,15 @@ export default function PostCard() {
  return (
 
   <Box flex={2} mr={5}> 
-   
   {
     post && post.data.children.map(post => {
       return (
-        <Card sx={{ my: 10 }}>
+        <Card sx={{ my: 5 }}>
           <CardHeader
             action={
               <Box
                 sx={{
                   display: 'flex',
-
                   flexDirection: 'column',
                   justifyContent: 'space-between',
                   alignItems: 'center',
@@ -159,7 +158,6 @@ export default function PostCard() {
       )
     })
   }
-  
    </Box>
  );
 }

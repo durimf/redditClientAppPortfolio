@@ -20,7 +20,7 @@ export default function SubredditList() {
 
 
   const {
-    data: posts,
+    data: subreddits,
     isLoading,
     isSuccess,
     isError,
@@ -32,7 +32,7 @@ export default function SubredditList() {
   if (isLoading) {
     content = <p>Loading...</p>
   } else if (isSuccess) {
-    content = posts.data.children.map((post,id) => {
+    content = subreddits.data.children.map((post,id) => {
       return (
         
           <ListItemButton key={id}>
@@ -63,6 +63,14 @@ export default function SubredditList() {
    aria-labelledby="nested-list-subheader"
   
   >
+         <ListItemButton>
+           <ListItemAvatar>
+             <Avatar alt="Remy Sharp"/>
+           </ListItemAvatar>
+           <Link to={'/subreddit/pics'}>
+             <ListItemText primary="Home" />
+           </Link>
+         </ListItemButton>
          {content}
   </List>
   </CardContent >

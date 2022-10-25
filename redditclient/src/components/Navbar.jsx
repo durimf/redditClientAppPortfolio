@@ -10,32 +10,54 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 function Navbar() {
   return (
     <Box sx={{
-      my: 5,
+      
       borderBottom: '1px solid',
       borderColor: grey[300],
       display: 'flex',
-      alignItems: 'center',
+      alignItems: 'baseline',
       justifyContent: 'space-between',
-      
+      bgcolor: 'background.default'
     }}>
-      <RedditIcon sx={{
-        fontSize: 65,
-        color: purple[700]
-      }} />
+     <Box sx={{
+      display: 'flex',
+      alignItems: 'center',
+     }}>
+        <RedditIcon sx={{
+          fontSize: 55,
+          color: 'white',
+          backgroundColor: purple[700],
+          borderRadius: '50%',
+          p: 0.5,
+          m: 2,
+        }} />
+          <Typography sx={{
+            color: purple[700],
+            fontSize: 25,
+            fontWeight: 600,
+            mr: 0.5,
+            mt: 1,
+            ml: 1,
+          }} >Reddit
+          </Typography>
+        <Typography
+        sx={{
+          fontSize: 25,
+          mt:1,
+          fontWeight: 400
+        }}>
+          Minimal
+        </Typography>
+        
+     </Box>
      
       <Box sx={{
         display: 'flex',
         alignItems: 'center',
         
       }}>
-        <DarkModeOutlinedIcon
-          sx={{
-            fontSize: 25,
-            marginRight: 2,
-          }}
-        />
         <GitHubIcon sx={{
           fontSize: 25,
+          mr: 2
         }} />
       </Box>
     </Box>

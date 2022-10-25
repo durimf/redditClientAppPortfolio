@@ -50,11 +50,9 @@ export default function SubredditList() {
     content = <div>{error.toString()}</div>
   }
  return (
-  <Card sx={{ my: 10, }} >
+  <Card sx={{ my: 5, }} flex={1} >
    <CardHeader
-
-    title="Post Title"
-
+    title="Subreddits"
     />
     <CardContent>
   <List

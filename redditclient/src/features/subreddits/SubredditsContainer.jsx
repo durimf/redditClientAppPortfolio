@@ -14,6 +14,8 @@ import StarBorder from '@mui/icons-material/StarBorder';
 import { Avatar, Card, CardContent, ListItemAvatar, CardHeader } from '@mui/material';
 import { useGetPostsQuery } from '../api/apiSlice';
 import { Link } from 'react-router-dom';
+import Skeleton from '@mui/material/Skeleton';
+
 
 export default function SubredditList() {
  const [open, setOpen] = React.useState(true);
@@ -30,7 +32,7 @@ export default function SubredditList() {
   let content
 
   if (isLoading) {
-    content = <p>Loading...</p>
+    content = <Skeleton variant="rounded" width={100} height={10}/>
   } else if (isSuccess) {
     content = subreddits.data.children.map((post,id) => {
       return (

@@ -7,10 +7,6 @@ import { Box } from '@mui/system';
 function Comment({ permalinkComment }) {
   
   const { data: comments, isFetching, isSuccess, error: isError } = useGetCommentsQuery(permalinkComment)
-
-  if(comments) {
-    console.log(comments)
-  }
  
   return (
    <>
